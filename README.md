@@ -2,18 +2,16 @@
 
 # Simple Appointment Booking System
 
-A simple appointment booking API system built using **Laravel 10 (API)** and implemented in **Vue 3 (SPA)** and tested using **Postman**.
+A simple appointment booking backend API built using Laravel 10.
+The API is consumed by a Vue 3 Single Page Application (SPA) and tested using Postman.
 
 This is a backend API system handles services, working hours, availability calculation, and appointment bookings.
 
-# Tech Stack Pre Requisites.
-*PHP v8.2*
-
-*Laravel v10.**
-
-*MySql v8.**
-
-*Composer v2.9*
+## Tech Stack & Prerequisites
+- PHP v8.2
+- Laravel v10.x
+- MySQL v8.x
+- Composer v2.9
 
 # Setup
 You can clone this repository using the git clone.
@@ -25,7 +23,7 @@ You can clone this repository using the git clone.
 
  ```php artisan key:generate```
 
-Now, Create a database named booking and update the database info into .env file by finding the below keys.
+Now, Create a database (e.g. `booking_db`) and update the following values in `.env`:
 
 - DB_DATABASE=booking_db
 - DB_USERNAME=root
@@ -57,23 +55,22 @@ Then your api server will run on http://localhost:8000
 2. /api/admin/working-hours/store - POST - Save the Working hours based on weekday.
 
 **Client API**
-1. /api/availability - GET - User can check the available timeslots for the specific date(Date cannot be the past date).
+1. /api/availability - GET - User can check the available timeslots for the given date and service based on working hours and existing bookings.(Date cannot be the past date). 
 2. /api/bookings - POST - User can do the booking only for future dates and for the today date but for the future time only not the past time.
 
-**Rules:**
-1. When user booking the appointment, Bookings time slot must match the available timeslot.
-2. When admin store the working time rules, it must not be overlap the previous timeslots he stored in the system.
-3. Business logic for get the time slot availability is managed by the single Service class file to both availability and bookings api method logic.
-
+## Business Rules
+1. When user booking the appointment, booking time must exactly match an available time slot.
+2. When admin store the working time rules, it must not be overlap the previous timeslots he stored in the system for the same weekday.
+3. Business logic for get the time slot availability is managed by the single Service class file to both availability and bookings api method logic to reused across APIs.
 
 
 **Improvements**
-1. I will be add Admin authentication
-2. Add Toggle API for Working hours slot table for Admin so he can Enable/Disable the timeslot.
-3. Add Toggle API for Enable/Disable the services he added in the system.
+1. Add admin authentication.
+2. Add enable/disable toggle for working hour rules for Admin so he can Enable/Disable the timeslot.
+3. Add Toggle API for Enable/Disable the services he(admin) added in the system.
 4. Send respective email to the user for his booking confirmation using queue jobs.
 5. Make API for user/admin both to cancel the appointment.
-6. Make indexes in db columns 
+6. Make indexes in db columns for better performance and faster the queries.
 
 ## File Structure
 appointment-booking-backend/
