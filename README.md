@@ -72,5 +72,152 @@ Then your api server will run on http://localhost:8000
 2. Add Toggle API for Working hours slot table for Admin so he can Enable/Disable the timeslot.
 3. Add Toggle API for Enable/Disable the services he added in the system.
 4. Send respective email to the user for his booking confirmation using queue jobs.
-5. Make API for user/admin both to cancel the appointment. 
+5. Make API for user/admin both to cancel the appointment.
+6. Make indexes in db columns 
 
+## File Structure
+appointment-booking-backend/
+
+├── app/
+
+│ ├── Http/
+
+│ │ ├── Controllers/
+
+│ │ │ └── Api/
+
+│ │ │ ├── AvailabilityController.php
+
+│ │ │ ├── BookingController.php
+
+│ │ │ ├── AdminController.php
+
+│ │ │ └── HomeController.php
+
+│ │ ├── Requests/
+
+│ │ │ ├── BookingRequest.php
+
+│ │ │ └── StoreWorkingHoursRequest.php
+
+│ │
+
+│ ├── Models/
+
+│ │ ├── Appointment.php
+
+│ │ ├── Service.php
+
+│ │ ├── Weekday.php
+
+│ │ └── WorkingTimeRule.php
+
+│ │
+
+│ └── Services/
+
+│ └── AvailabilityService.php
+
+│
+
+├── database/
+
+│ ├── migrations/
+
+│ └── seeders/
+
+│ ├── ServiceSeeder.php
+
+│ └── WeekdaySeeder.php
+
+│
+
+├── routes/
+
+│ └── api.php
+
+│
+
+├── .env
+
+├── composer.json
+
+└── README.md
+
+## Folder & File Responsibilities
+
+### `app/Http/Controllers/Api`
+Contains all API controllers.
+
+- **AvailabilityController**
+  - Calculates available time slots based on working hours, service duration, and existing bookings.
+
+- **BookingController**
+  - Handles appointment booking.
+  - Validates slot availability, future time, and prevents overlaps.
+
+- **AdminController**
+  - Manages working hour rules (list & create).
+
+- **HomeController**
+  - Provides basic master data like services and weekdays.
+
+---
+
+### `app/Http/Requests`
+Contains request validation logic.
+
+- **BookingRequest**
+  - Validates booking payload (date format, email, service).
+
+- **StoreWorkingHoursRequest**
+  - Validates admin working hour inputs and time rules.
+
+---
+
+### `app/Models`
+Eloquent models representing database tables.
+
+- **Service**
+  - Service name, duration, and active status.
+
+- **WorkingTimeRule**
+  - Defines working hours for each weekday.
+
+- **Weekday**
+  - Master table for weekdays.
+
+- **Appointment**
+  - Stores booked appointments with status.
+
+---
+
+### `app/Services`
+Contains reusable business logic.
+
+- **AvailabilityService**
+  - Single source of truth for availability calculation.
+  - Used by both availability listing and booking validation.
+
+---
+
+### `database/migrations`
+Defines database schema.
+
+- Tables: services, working_time_rules, weekdays, appointments
+
+---
+
+### `database/seeders`
+Initial data population.
+
+- **ServiceSeeder**
+  - Inserts default services.
+
+- **WeekdaySeeder**
+  - Inserts weekdays.
+
+---
+
+### `routes/api.php`
+Defines all API routes for client and admin usage.
