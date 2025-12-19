@@ -7,17 +7,22 @@ A simple appointment booking API system built using **Laravel 10 (API)** and imp
 This is a backend API system handles services, working hours, availability calculation, and appointment bookings.
 
 # Tech Stack Pre Requisites.
-PHP v8.2
-Framework - Laravel v10
-Database - MySql
-Dependency Manager - Composer
+*PHP v8.2*
+
+Framework - *Laravel v10*
+
+Database - *MySql*
+
+Dependency Manager - *Composer*
 
 # Setup
 You can clone this repository using the git clone.
  After clone, Run these commands one by one:
 
  ```composer install```
+
 ``` cp .env.example .env```
+
 ``` php artisan key:generate```
 
 Now, Create a database named booking and update the database info into .env file by finding the below keys.
