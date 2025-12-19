@@ -2,7 +2,7 @@
 
 # Simple Appointment Booking System
 
-A simple appointment booking API system built using **Laravel 10 (API)** and implemented in **Vue 3 (SPA)** ans tested using **Postman**.
+A simple appointment booking API system built using **Laravel 10 (API)** and implemented in **Vue 3 (SPA)** and tested using **Postman**.
 
 This is a backend API system handles services, working hours, availability calculation, and appointment bookings.
 
