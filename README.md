@@ -16,26 +16,26 @@ Dependency Manager - Composer
 You can clone this repository using the git clone.
  After clone, Run these commands one by one:
 
- composer install
- cp .env.example .env
- php artisan key:generate
+ ```composer install```
+``` cp .env.example .env```
+``` php artisan key:generate```
 
 Now, Create a database named booking and update the database info into .env file by finding the below keys.
 
-DB_DATABASE=booking_db
-DB_USERNAME=root
-DB_PASSWORD=your_db_password
+- DB_DATABASE=booking_db
+- DB_USERNAME=root
+- DB_PASSWORD=your_db_password
 
 After this, Run:
 
-php artisan migrate
+```php artisan migrate```
 
-php artisan db:seed
+```php artisan db:seed```
 
 
 Then, start your api server by running the below command:
 
-php artisan serve --port=8000
+```php artisan serve --port=8000```
 
 Then your api server will run on http://localhost:8000
 
