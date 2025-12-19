@@ -1,66 +1,71 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Simple Appointment Booking System
 
-## About Laravel
+A simple appointment booking API system built using **Laravel 10 (API)** and implemented in **Vue 3 (SPA)** ans tested using **Postman**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This is a backend API system handles services, working hours, availability calculation, and appointment bookings.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Tech Stack Pre Requisites.
+PHP v8.2
+Framework - Laravel v10
+Database - MySql
+Dependency Manager - Composer
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Setup
+You can clone this repository using the git clone.
+ After clone, Run these commands one by one:
 
-## Learning Laravel
+ composer install
+ cp .env.example .env
+ php artisan key:generate
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Now, Create a database named booking and update the database info into .env file by finding the below keys.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+DB_DATABASE=booking_db
+DB_USERNAME=root
+DB_PASSWORD=your_db_password
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+After this, Run:
 
-## Laravel Sponsors
+php artisan migrate
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+php artisan db:seed
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Then, start your api server by running the below command:
 
-## Contributing
+php artisan serve --port=8000
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Then your api server will run on http://localhost:8000
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+# Information about APIs
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**Common API:**
+1. /api/services - GET - Get All Services List
+2. /api/weekdays - GET - Get All Weekdays List
 
-## License
+**Admin API:**
+1. /api/admin/working-hours/list - GET - Get List of saved working hours by each weekday.
+2. /api/admin/working-hours/store - POST - Save the Working hours based on weekday.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Client API**
+1. /api/availability - GET - User can check the available timeslots for the specific date(Date cannot be the past date).
+2. /api/bookings - POST - User can do the booking only for future dates and for the today date but for the future time only not the past time.
+
+**Rules:**
+1. When user booking the appointment, Bookings time slot must match the available timeslot.
+2. When admin store the working time rules, it must not be overlap the previous timeslots he stored in the system.
+3. Business logic for get the time slot availability is managed by the single Service class file to both availability and bookings api method logic.
+
+
+
+**Improvements**
+1. I will be add Admin authentication
+2. Add Toggle API for Working hours slot table for Admin so he can Enable/Disable the timeslot.
+3. Add Toggle API for Enable/Disable the services he added in the system.
+4. Send respective email to the user for his booking confirmation using queue jobs.
+5. Make API for user/admin both to cancel the appointment. 
+
