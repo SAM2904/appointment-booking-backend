@@ -9,11 +9,11 @@ This is a backend API system handles services, working hours, availability calcu
 # Tech Stack Pre Requisites.
 *PHP v8.2*
 
-Framework - *Laravel v10*
+*Laravel v10.**
 
-Database - *MySql*
+*MySql v8.**
 
-Dependency Manager - *Composer*
+*Composer v2.9*
 
 # Setup
 You can clone this repository using the git clone.
