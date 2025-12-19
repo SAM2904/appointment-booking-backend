@@ -21,9 +21,9 @@ You can clone this repository using the git clone.
 
  ```composer install```
 
-``` cp .env.example .env```
+ ```cp .env.example .env```
 
-``` php artisan key:generate```
+ ```php artisan key:generate```
 
 Now, Create a database named booking and update the database info into .env file by finding the below keys.
 
