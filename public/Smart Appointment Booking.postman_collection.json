@@ -1,0 +1,693 @@
+{
+	"info": {
+		"_postman_id": "7e5e71c9-d090-44cd-ad76-da33fcff5d0b",
+		"name": "Smart Appointment Booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34199172"
+	},
+	"item": [
+		{
+			"name": "Get Services List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/services",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"services"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/services",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"services"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Dec 2025 02:19:34 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Services list fetched successfully.\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Consultation\",\n            \"duration_minutes\": 30\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Hair Cut\",\n            \"duration_minutes\": 20\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Hair Spa\",\n            \"duration_minutes\": 60\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Hair Wash\",\n            \"duration_minutes\": 15\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Week Days List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/weekdays",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"weekdays"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/weekdays",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"weekdays"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Dec 2025 02:19:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Weekdays list fetched.\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Sunday\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Monday\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Tuesday\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Wednesday\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Thursday\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Friday\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Saturday\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Admin: Add Working Hours",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"weekday_id\": \"3\",\n    \"start_time\": \"10:00\",\n    \"end_time\": \"20:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/admin/working-hours/store",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"working-hours",
+						"store"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Admin: Add Working Hours",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"weekday_id\": \"3\",\n    \"start_time\": \"10:00\",\n    \"end_time\": \"20:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/working-hours/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"working-hours",
+								"store"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Dec 2025 02:20:17 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "57"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Working Time has been created successfully.\",\n    \"data\": {\n        \"weekday_id\": \"3\",\n        \"start_time\": \"10:00\",\n        \"end_time\": \"20:00\",\n        \"is_active\": 1,\n        \"updated_at\": \"2025-12-19T02:20:17.000000Z\",\n        \"created_at\": \"2025-12-19T02:20:17.000000Z\",\n        \"id\": 6\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Admin: Get List Working Hours",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/admin/working-hours/list",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"working-hours",
+						"list"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/admin/working-hours/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"working-hours",
+								"list"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Dec 2025 02:20:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Working Times Slots are fetched successfully.\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"weekday_id\": 1,\n            \"weekday_name\": \"Sunday\",\n            \"start_time\": \"10:00:00\",\n            \"end_time\": \"20:00:00\",\n            \"is_active\": 1\n        },\n        {\n            \"id\": 2,\n            \"weekday_id\": 2,\n            \"weekday_name\": \"Monday\",\n            \"start_time\": \"10:00:00\",\n            \"end_time\": \"20:00:00\",\n            \"is_active\": 1\n        },\n        {\n            \"id\": 6,\n            \"weekday_id\": 3,\n            \"weekday_name\": \"Friday\",\n            \"start_time\": \"10:00:00\",\n            \"end_time\": \"20:00:00\",\n            \"is_active\": 1\n        },\n        {\n            \"id\": 4,\n            \"weekday_id\": 4,\n            \"weekday_name\": \"Wednesday\",\n            \"start_time\": \"10:00:00\",\n            \"end_time\": \"20:00:00\",\n            \"is_active\": 1\n        },\n        {\n            \"id\": 5,\n            \"weekday_id\": 5,\n            \"weekday_name\": \"Thursday\",\n            \"start_time\": \"10:00:00\",\n            \"end_time\": \"20:00:00\",\n            \"is_active\": 1\n        },\n        {\n            \"id\": 3,\n            \"weekday_id\": 6,\n            \"weekday_name\": \"Tuesday\",\n            \"start_time\": \"10:00:00\",\n            \"end_time\": \"20:00:00\",\n            \"is_active\": 1\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Service Availability",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/availability?date=2025-12-19&service_id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"availability"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2025-12-19"
+						},
+						{
+							"key": "service_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/availability?date=2025-12-19&service_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"availability"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2025-12-19"
+								},
+								{
+									"key": "service_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Dec 2025 02:21:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "56"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Slots available.\",\n    \"data\": [\n        {\n            \"start\": \"2025-12-19 10:00\",\n            \"end\": \"2025-12-19 10:30\"\n        },\n        {\n            \"start\": \"2025-12-19 10:30\",\n            \"end\": \"2025-12-19 11:00\"\n        },\n        {\n            \"start\": \"2025-12-19 12:00\",\n            \"end\": \"2025-12-19 12:30\"\n        },\n        {\n            \"start\": \"2025-12-19 12:30\",\n            \"end\": \"2025-12-19 13:00\"\n        },\n        {\n            \"start\": \"2025-12-19 13:00\",\n            \"end\": \"2025-12-19 13:30\"\n        },\n        {\n            \"start\": \"2025-12-19 13:30\",\n            \"end\": \"2025-12-19 14:00\"\n        },\n        {\n            \"start\": \"2025-12-19 14:00\",\n            \"end\": \"2025-12-19 14:30\"\n        },\n        {\n            \"start\": \"2025-12-19 14:30\",\n            \"end\": \"2025-12-19 15:00\"\n        },\n        {\n            \"start\": \"2025-12-19 15:00\",\n            \"end\": \"2025-12-19 15:30\"\n        },\n        {\n            \"start\": \"2025-12-19 15:30\",\n            \"end\": \"2025-12-19 16:00\"\n        },\n        {\n            \"start\": \"2025-12-19 16:30\",\n            \"end\": \"2025-12-19 17:00\"\n        },\n        {\n            \"start\": \"2025-12-19 17:00\",\n            \"end\": \"2025-12-19 17:30\"\n        },\n        {\n            \"start\": \"2025-12-19 17:30\",\n            \"end\": \"2025-12-19 18:00\"\n        },\n        {\n            \"start\": \"2025-12-19 18:00\",\n            \"end\": \"2025-12-19 18:30\"\n        },\n        {\n            \"start\": \"2025-12-19 18:30\",\n            \"end\": \"2025-12-19 19:00\"\n        },\n        {\n            \"start\": \"2025-12-19 19:00\",\n            \"end\": \"2025-12-19 19:30\"\n        },\n        {\n            \"start\": \"2025-12-19 19:30\",\n            \"end\": \"2025-12-19 20:00\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"service_id\": 1,\n    \"start_at\": \"2025-12-19 17:00\",\n    \"client_email\": \"test@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/bookings",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "422 - Time Slot Not Available",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"service_id\": 1,\n    \"start_at\": \"2025-12-19 02:15\",\n    \"client_email\": \"test@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/bookings",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 18 Dec 2025 23:10:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": false,\n    \"message\": \"Selected time slot is not available.\"\n}"
+				},
+				{
+					"name": "409 - Slot Already Booked",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"service_id\": 1,\n    \"start_at\": \"2025-12-19 16:15\",\n    \"client_email\": \"test@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/bookings",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Dec 2025 02:22:47 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": false,\n    \"message\": \"Slot already booked.\"\n}"
+				},
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"service_id\": 1,\n    \"start_at\": \"2025-12-19 17:00\",\n    \"client_email\": \"test@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/bookings",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bookings"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.29"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Dec 2025 02:23:24 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "57"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"Appointment booked successfully.\",\n    \"data\": {\n        \"service_id\": 1,\n        \"start_at\": \"2025-12-19T17:00:00.000000Z\",\n        \"end_at\": \"2025-12-19T17:30:00.000000Z\",\n        \"client_email\": \"test@gmail.com\",\n        \"status\": 0,\n        \"updated_at\": \"2025-12-19T02:23:24.000000Z\",\n        \"created_at\": \"2025-12-19T02:23:24.000000Z\",\n        \"id\": 4\n    }\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
