@@ -13,7 +13,7 @@ class AvailabilityController extends Controller
     public function getAvailability(Request $request)
     {
         $request->validate([
-            'date' => 'required|date',
+            'date' => 'required|date|date_format:Y-m-d|after_or_equal:today',
             'service_id' => 'required|exists:services,id',
         ]);
 
